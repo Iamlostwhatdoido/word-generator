@@ -33,7 +33,7 @@ class WordGenerator:
 			else:
 				word += next_letter
 				root = root[1:] + next_letter
-		return word
+		return word.capitalize()
 	
 
 	def next_letter(self, root:str) -> str:
