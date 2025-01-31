@@ -8,9 +8,10 @@ def create_dictio(language:str,vision:int):
 	
 	alphabet = ""
 	matrix : dict[str,dict[str,int]] = {}
+	root_set = set()
 
 	with open("sources/"+language+".txt","r") as source_file:
-		for word in source_file.readlines():
+		for i,word in enumerate(source_file.readlines()):
 			root = " "*vision
 
 			for letter in word.lower().removesuffix("\n")+" ":
@@ -18,7 +19,8 @@ def create_dictio(language:str,vision:int):
 					alphabet += letter
 					alphabet = "".join(sorted(alphabet))
 
-				if not root in set(matrix.keys()):
+				if not root in root_set:
+					root_set.add(root)
 					matrix[root] = {}
 				
 				if not letter in matrix[root].keys():
@@ -27,6 +29,8 @@ def create_dictio(language:str,vision:int):
 				matrix[root][letter] += 1
 
 				root = root[1:] + letter
+
+	print("source read")
 
 	with open("dictionnaries/"+language+"-n"+str(vision)+".txt","w") as dictio_file:
 		for letter in alphabet:
