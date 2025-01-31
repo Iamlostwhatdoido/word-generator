@@ -45,6 +45,7 @@ class WordGenerator:
 
 	def write_words(self, number:int):
 		words = [self.create_word() for _ in range(number)]
+		words.sort(key= lambda x : len(x))
 		with open("outfile.txt","w") as outfile:
 			outfile.write("\n".join(words))
 	
