@@ -1,7 +1,7 @@
 import os
 
 
-def create_dictio(language:str,vision=2):
+def create_dictio(language:str,vision:int):
 	if not os.path.exists("sources/"+language+".txt"):
 		print(f"Error : Language source missing for {language}")
 		return
@@ -28,7 +28,7 @@ def create_dictio(language:str,vision=2):
 
 				root = root[1:] + letter
 
-	with open("dictionnaries/"+language+".txt","w") as dictio_file:
+	with open("dictionnaries/"+language+"-n"+str(vision)+".txt","w") as dictio_file:
 		for letter in alphabet:
 			dictio_file.write("\t"+letter)
 

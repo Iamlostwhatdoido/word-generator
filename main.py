@@ -1,10 +1,7 @@
-import os
-from dictio_creator import create_dictio
+from word_generator_class import WordGenerator
 
-LANGUAGE_NAME = "test"
-GENERATE_NUMBER = 10
 
-if not os.path.exists("dictionnaries/"+LANGUAGE_NAME+".txt"):
-	print(f"Creating a dictionnary for {LANGUAGE_NAME}")
-	create_dictio(LANGUAGE_NAME)
+if __name__ == "__main__":
 
+	word_generator = WordGenerator("test",vision=2)
+	word_generator.write_words(20)
